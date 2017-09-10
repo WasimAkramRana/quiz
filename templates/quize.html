@@ -1,0 +1,19 @@
+<div class="row" ng-controller="MainCtrl" ng-init="loadQuizeData()">
+  <h2>Quiz Questions</h2>
+  <form name="myForm">
+      <ol>
+        <li ng-repeat="data in formData">
+          <p>{{data.question}}</p>
+          <ul>
+            <li class="list" ng-repeat="option in data.options">
+              <div class="radio">
+                <input type="radio" id= "{{ 'option' + data.questionID }}"  ng-model="quizModel.userAnsers[$parent.$index]" name= "{{data.questionID}}" value="{{option}}" required> {{option}} </input>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <button type="button" class="btn btn-primary" ng-click="submitForm()">Submit</button>
+      <input type="reset" class="btn btn-primary" value="Cancel">
+    </form>
+</div>
